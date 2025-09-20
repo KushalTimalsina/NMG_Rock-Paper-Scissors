@@ -5,8 +5,17 @@ function play(userChoice) {
   const choices = ['rock', 'paper', 'scissors'];
   const computerChoice = choices[Math.floor(Math.random() * 3)];
 
-  document.getElementById('user-choice').textContent = 'You chose: ' + userChoice;
-  document.getElementById('computer-choice').textContent = 'Computer chose: ' + computerChoice;
+  const userChoiceEl = document.getElementById('user-choice');
+  const computerChoiceEl = document.getElementById('computer-choice');
+  const roundResultEl = document.getElementById('round-result');
+  const userScoreEl = document.getElementById('user-score');
+  const computerScoreEl = document.getElementById('computer-score');
+
+  userChoiceEl.textContent = 'You chose: ' + userChoice;
+  computerChoiceEl.textContent = 'Computer chose: ' + computerChoice;
+
+  computerChoiceEl.classList.add('animate-choice');
+  setTimeout(() => computerChoiceEl.classList.remove('animate-choice'), 300);
 
   let result = '';
 
@@ -19,14 +28,24 @@ function play(userChoice) {
   ) {
     result = "You win!";
     userScore++;
+    userScoreEl.classList.add('animate-score');
+    setTimeout(() => userScoreEl.classList.remove('animate-score'), 500);
   } else {
     result = "You lose!";
     computerScore++;
+    computerScoreEl.classList.add('animate-score');
+    setTimeout(() => computerScoreEl.classList.remove('animate-score'), 500);
   }
 
-  document.getElementById('round-result').textContent = result;
-  document.getElementById('user-score').textContent = userScore;
-  document.getElementById('computer-score').textContent = computerScore;
+  roundResultEl.textContent = result;
+  roundResultEl.style.color = result.includes('win') ? '#90be6d' : result.includes('lose') ? '#f94144' : '#f9c74f';
+  roundResultEl.style.transform = 'scale(1.2)';
+  setTimeout(() => {
+    roundResultEl.style.transform = 'scale(1)';
+  }, 300);
+
+  userScoreEl.textContent = userScore;
+  computerScoreEl.textContent = computerScore;
 }
 
 function resetGame() {

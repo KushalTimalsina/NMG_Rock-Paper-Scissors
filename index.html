@@ -7,26 +7,28 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Rock Paper Scissors</h1>
+<div class="container">
+  <h1>Rock Paper Scissors</h1>
 
-<div id="choices">
-  <button onclick="play('rock')">Rock</button>
-  <button onclick="play('paper')">Paper</button>
-  <button onclick="play('scissors')">Scissors</button>
+  <div id="choices">
+    <button class="choice-btn" onclick="play('rock')">Rock</button>
+    <button class="choice-btn" onclick="play('paper')">Paper</button>
+    <button class="choice-btn" onclick="play('scissors')">Scissors</button>
+  </div>
+
+  <div id="result">
+    <p id="user-choice"></p>
+    <p id="computer-choice"></p>
+    <p id="round-result"></p>
+  </div>
+
+  <div id="score">
+    <p>User: <span id="user-score">0</span></p>
+    <p>Computer: <span id="computer-score">0</span></p>
+  </div>
+
+  <button class="reset-btn" onclick="resetGame()">Restart Game</button>
 </div>
-
-<div id="result">
-  <p id="user-choice"></p>
-  <p id="computer-choice"></p>
-  <p id="round-result"></p>
-</div>
-
-<div id="score">
-  <p>User: <span id="user-score">0</span></p>
-  <p>Computer: <span id="computer-score">0</span></p>
-</div>
-
-<button onclick="resetGame()">Restart Game</button>
 
 <script src="script.js"></script>
 </body>
